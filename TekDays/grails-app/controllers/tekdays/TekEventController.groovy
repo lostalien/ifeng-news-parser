@@ -2,5 +2,5 @@ package tekdays
 
 class TekEventController {
 
-    def scaffold = TekEvent 
+    def scaffold = TekEvent
 }
