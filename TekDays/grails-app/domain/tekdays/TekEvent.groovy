@@ -10,8 +10,10 @@ class TekEvent {
   String description
 
   static hasMany = [volunteers: TekUser,
-          respondents: String,
-          sponsorships: Sponsorship]
+                      respondents: String,
+                      sponsorships: Sponsorship,
+                      tasks : Task,
+                      messages : Message]
 
   String toString() {
     "$name $city"
@@ -25,6 +27,9 @@ class TekEvent {
     venue(nullable: true)
     startDate(nullable: true)
     endDate(nullable: true)
+    volunteers(nullable: true)
     sponsorships(nullable: true)
+    tasks(nullable: true)
+    messages(nullable: true)
   }
 }

@@ -1,8 +1,8 @@
 dataSource {
   pooled = true
-  driverClassName = "org.hsqldb.jdbcDriver"
-  //driverClassName = "com.mysql.jdbc.Driver"
-  username = "sa"
+  //driverClassName = "org.hsqldb.jdbcDriver"
+  driverClassName = "com.mysql.jdbc.Driver"
+  username = "root"
   password = ""
 }
 hibernate {
@@ -15,8 +15,8 @@ environments {
   development {
     dataSource {
       dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-      url = "jdbc:hsqldb:mem:devDB;characterEncoding=utf8"
-      //url = "jdbc:mysql://localhost:3306/tekdays?useUnicode=true&characterEncoding=utf-8"
+      //url = "jdbc:hsqldb:file:devDB;characterEncoding=utf8"
+      url = "jdbc:mysql://localhost:3306/tekdays?useUnicode=true&characterEncoding=utf-8"
 
     }
   }
