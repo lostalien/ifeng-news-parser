@@ -8,14 +8,14 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class MyArrayListTest
+public class MyLinkedListTest
         extends TestCase {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public MyArrayListTest(String testName) {
+    public MyLinkedListTest(String testName) {
         super(testName);
     }
 
@@ -23,25 +23,30 @@ public class MyArrayListTest
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(MyArrayListTest.class);
+        return new TestSuite(MyLinkedListTest.class);
     }
 
     /**
      * 测试添加元素
      */
     public void testAdd() {
-        MyList<Integer> list = new MyArrayList<Integer>();
-        for (int i = 0; i < 23; i++) {
-            list.add(((Double) (Math.random() * 100)).intValue());
+        MyList<Integer> list = new MyLinkedList<Integer>();
+        for (int i = 0; i < 5; i++) {
+            //list.add(((Double) (Math.random() * 100)).intValue());
+            list.add(i);
         }
-        Assert.assertEquals(23, list.size());
+        System.out.println("添加了几个数后：");
+        for( int k = 0; k < list.size(); k++ ){
+            System.out.println( list.get(k) );
+        }
+        Assert.assertEquals(5, list.size());
     }
 
     /**
      * 测试在某个位置上插入新元素
      */
     public void testAddAtIndex() {
-        MyList<Integer> list = new MyArrayList<Integer>();
+        MyList<Integer> list = new MyLinkedList<Integer>();
         list.add(1);
         list.add(3);
         list.add(1, 2);
@@ -51,7 +56,7 @@ public class MyArrayListTest
     }
 
     public void testRemove() {
-        MyList<Integer> list = new MyArrayList<Integer>();
+        MyList<Integer> list = new MyLinkedList<Integer>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -62,7 +67,7 @@ public class MyArrayListTest
             System.out.println("");
         }
 
-        list.remove(0);
+        list.remove(5);
         System.out.println("移除后: ");
         for (int k = 0; k < list.size(); k++) {
 

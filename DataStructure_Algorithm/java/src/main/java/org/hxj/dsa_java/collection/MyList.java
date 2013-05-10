@@ -28,4 +28,9 @@ public interface MyList<E>{
     void remove( int index );
 
     E get(int index );
+
+    /**
+     * 将线性表紧凑下，只对数组型线性表有意义
+     */
+    void compact();
 }

@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class MyArrayList<E> implements MyList<E> {
 
-    private final int  INITIAL_CAPACITY = 10;
+    private final int  INITIAL_CAPACITY = 5;
 
     private E[] array = (E[])new Object[INITIAL_CAPACITY];
 
@@ -73,6 +73,19 @@ public class MyArrayList<E> implements MyList<E> {
         for( int k = index + 1; k <= current_index; k++){
             array[k-1] = array[k];
         }
+        current_index--;
+        compact();
+
+    }
+
+    /**
+     * 将线性表紧凑下，只对数组型线性表有意义
+     */
+    @Override
+    public void compact() {
+        E[] newArray = (E[])new Object[current_index + 1];
+        System.arraycopy( array, 0, newArray, 0, current_index + 1 );
+        array = newArray;
     }
 
     @Override
