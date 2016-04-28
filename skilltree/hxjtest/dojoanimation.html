@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+	/* Any demo specific styling needed for this tutorial only */
+
+	.box {
+		position: absolute;
+		height: 200px;
+		width: 200px;
+		background-color: #ddd;
+		border: 1px #eee;
+		padding: 5px;
+	}
+	.innerBox {
+		margin: 5%;
+		padding: 5px;
+		background-color: white;
+	}
+
+	#container {
+		position: relative;
+		padding: 10px;
+		height: 300px;
+		width: 450px;
+	}
+
+	.contentBox {
+		background-color: white;
+		position: absolute;
+		width: 200px;
+		border: solid 1px #99c;
+		margin: 5px;
+
+		-moz-box-shadow: 10px 10px 5px #888;
+		-webkit-box-shadow: 2px 3px 5px #888;
+		box-shadow: 10px 10px 5px #888;
+	}
+
+  </style>
+  
+  <script>
+		dojoConfig = {
+			parseOnLoad : true
+			,async:false
+		}
+	</script>
+	<link rel="stylesheet" href="../js/dojo-release-1.10.4-src/dijit/themes/claro/claro.css" media="screen">
+	<!-- load Dojo -->
+    <script src="../js/dojo-release-1.10.4-src/dojo/dojo.js" ></script>
+	<script>
+		
+		require([ "dojo/parser", "dijit/layout/BorderContainer",
+			"dijit/layout/TabContainer", "dijit/layout/AccordionContainer",
+			"dijit/layout/ContentPane", "dijit/layout/AccordionPane" ]);
+	</script>
+	
+</head>
+<body>
+<h3>Demo: Border Animation</h3>
+		<button id="startButton">Grow Borders</button>
+		<button id="reverseButton">Shrink Borders</button>
+
+		<div id="anim8target" class="box" style="border-style:outset">
+			<div class="innerBox">A box</div>
+		</div>
+  
+  	<script>
+			require(["dojo/_base/fx", "dojo/on", "dojo/dom", "dojo/domReady!"], function(baseFx, on, dom) {
+				var startButton = dom.byId("startButton"),
+					reverseButton = dom.byId("reverseButton"),
+					anim8target = dom.byId("anim8target");
+
+					// Set up a couple of click handlers to run our animations
+					on(startButton, "click", function(evt){
+						baseFx.animateProperty({
+							node: anim8target,
+							properties: { borderWidth: 100 }
+						}).play();
+					});
+					on(reverseButton, "click", function(evt){
+						baseFx.animateProperty({
+							node: anim8target,
+							properties: { borderWidth: 1 }
+						}).play();
+					});
+			});
+		</script>
+</body>
+</html>

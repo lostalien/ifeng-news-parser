@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Demo: Layout with Dijit</title>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			overflow: hidden;
+			padding: 0;
+		}
+
+		#appLayout {
+			height: 100%;
+		}
+		#leftCol {
+			width: 14em;
+		}
+
+		.claro .demoLayout .edgePanel {
+			background-color: #d0e9fc;
+		}
+
+		#viewsChart {
+			width: 550px;
+			height: 550px;
+		}
+		
+		/*整个表格*/
+		#grid{
+			border:1px pink solid;
+			width:640px;
+			float:left;
+		}
+		
+		/*表格单元*/
+		.cell{
+			width:64px;
+			height:64px;
+			border:0px green solid;
+			float:left;
+			background-color:lavenderblush;
+			overflow:hidden;
+			text-align:center;
+			/*background-image:url(img/wowicons/icons/Spell_Frost_FrostArmor02.jpg);*/
+			background-repeat:no-repeat;
+			opacity:0.6;
+		}
+		.cell:hover{
+			background-color:pink;
+			opacity:1;
+		}
+		
+		.skillinPool{
+			width:64px;
+			height:64px;
+			overflow:hidden;
+			text-align:center;
+			/*background-image:url(img/wowicons/icons/Spell_Frost_FrostArmor02.jpg);*/
+			background-repeat:no-repeat;
+			opacity:0.6;
+		}
+	</style>
+	<script>
+		var dojoConfig = {
+		    baseUrl: "/tree/js/",
+			tlmSiblingOfDojo: false,
+			packages: [
+				{ name: "dojo", location: "lib/dojo" },
+				{ name: "dijit", location: "lib/dijit" },
+				{ name: "dojox", location: "lib/dojox" },
+				{ name: "editor", location: "editor" }
+			]
+			,parseOnLoad : true
+			,async:true
+		}
+	</script>
+	<link rel="stylesheet" href="js/lib/dijit/themes/nihilo/nihilo.css" media="screen">
+	<!-- load Dojo -->
+    <script src="js/lib/dojo/dojo.js" ></script>
+	<script>
+		
+		require([ "dojo/parser", "dijit/layout/BorderContainer",
+			"dijit/layout/TabContainer", "dijit/layout/AccordionContainer",
+			"dijit/layout/ContentPane", "dijit/layout/AccordionPane" ]);
+			
+	    //生成10*10的格子
+		require([
+			"dojo/query","dojo/dom"
+			,"dojo/dom-construct"
+			,"dojo/dnd/Source"
+			,"editor/Board"
+			,"dojo/domReady!"]
+			,function(query,dom,domConstruct,Source,Board){
+			console.log("开始生成10*10的格子");
+			var grid = dom.byId("grid");
+			
+			var board1 = new Board();
+			board1.totalRow = 3;
+			board1.totalCol = 3;
+			board1.introSelf();
+			
+			var board2 = new Board();
+			board2.totalRow = 5;
+			board2.totalCol = 5;
+			board2.introSelf();			
+			
+			for( var i = 0; i < 100; i++ ){
+				//获取行号
+				var rowNum = Math.floor(i / 10);
+				//获取列号
+				var colNum = i % 10;
+				//创建单元格
+				var cell = domConstruct.create(
+					"div"
+					,{
+						className:"cell"
+						,id : "cell_" + rowNum + "_" + colNum
+						//,innerHTML:"<b>哈哈哈23223</b>"
+					}
+					,grid
+				);
+				//console.log("新建了一个cell，id为：" + cell.id);
+				//将每个cell变为可拖拽Source
+				var skillCell = new Source(cell.id,{accept:['skill']});
+				skillCell.emit("DndDrop");
+				//换行
+				if( colNum === 9 ){
+					domConstruct.create(
+						"div"
+						,{
+							style:"clear:left"
+						}
+						,grid
+					);
+				}
+								
+			}
+			//给cell设置hover事件
+		});
+	</script>
+</head>
+<body class="nihilo">
+	<div id="appLayout" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline'">
+		<div class="centerPanel" data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region: 'center', tabPosition: 'bottom'">
+			<div data-dojo-type="dijit/layout/ContentPane" title="Group 1">
+				<!-- <div>
+					<ul id="selectedSkills" data-dojo-type="dojo/dnd/Source" data-dojo-props="accept:['skill']" style="border:1px black solid;height=30px; max-height=50px">
+						拖到我这里试试！
+					</ul>
+				</div> -->
+				<h4>网格板</h4>
+				<div id="grid">
+				</div>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title="Group Two">
+				<h4>Group 2 Content</h4>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title="Long Tab Label for this One">
+				<h4>Group 3 Content</h4>
+			</div>
+		</div>
+		<div class="edgePanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">Header content (top)</div>
+		<div id="leftCol" class="edgePanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'left', splitter: true">
+			<h4>组件区</h4>
+			<div data-dojo-type="dijit/layout/AccordionContainer" data-dojo-props="region: 'center', tabPosition: 'bottom'">
+				<div data-dojo-type="dijit/layout/ContentPane" title="技 能">
+					<!--<ul id="skillList" data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<li class="dojoDndItem" dndtype="skill">技能A</li>
+						<li class="dojoDndItem" dndtype="skill">技能B</li>
+						<li class="dojoDndItem" dndtype="skill">技能C</li>
+					</ul>-->
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="skillinPool dojoDndItem" style="background-image:url(img/wowicons/icons/Spell_Frost_FrostArmor02.jpg);" dndtype="skill">
+							<p style="margin-top:25px">冰 盾<p>
+						</div>
+					</div>
+				
+				</div>
+				
+				<div data-dojo-type="dijit/layout/ContentPane" title="连 线">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

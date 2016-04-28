@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>拖拽</title>
+	<link type="text/css"  href="css/layout.css" rel="stylesheet">
+	
+	<script>
+		var dojoConfig = {
+		    baseUrl: "/tree/js/",
+			tlmSiblingOfDojo: false,
+			packages: [
+				{ name: "dojo", location: "lib/dojo" },
+				{ name: "dijit", location: "lib/dijit" },
+				{ name: "dojox", location: "lib/dojox" },
+				{ name: "editor", location: "editor" }
+			]
+			,parseOnLoad : true
+			,async:true
+		}
+	</script>
+	<link rel="stylesheet" href="js/lib/dijit/themes/nihilo/nihilo.css" media="screen">
+	<!-- load Dojo -->
+    <script src="js/lib/dojo/dojo.js" ></script>
+    <script src="js/editor/init.js" ></script>	
+	<script>
+		
+
+	</script>
+</head>
+<body class="nihilo">
+	<div id="appLayout" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline'">
+		<div class="centerPanel" data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region: 'center', tabPosition: 'bottom'">
+			<div data-dojo-type="dijit/layout/ContentPane" title="Group 1">
+				<!-- <div>
+					<ul id="selectedSkills" data-dojo-type="dojo/dnd/Source" data-dojo-props="accept:['skill']" style="border:1px black solid;height=30px; max-height=50px">
+						拖到我这里试试！
+					</ul>
+				</div> -->
+				<h4>网格板</h4>
+				<div id="grid">
+				</div>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title="Group Two">
+				<h4>Group 2 Content</h4>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title="Long Tab Label for this One">
+				<h4>Group 3 Content</h4>
+			</div>
+		</div>
+		<div class="edgePanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">Header content (top)</div>
+		<div id="leftCol" class="edgePanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'left', splitter: true">
+			<h4>组件区</h4>
+			<div data-dojo-type="dijit/layout/AccordionContainer"  style="height:300px">
+				<div data-dojo-type="dijit/layout/ContentPane" title="技 能">
+					<!--<ul id="skillList" data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<li class="dojoDndItem" dndtype="skill">技能A</li>
+						<li class="dojoDndItem" dndtype="skill">技能B</li>
+						<li class="dojoDndItem" dndtype="skill">技能C</li>
+					</ul>-->
+					<div id="skillPool">
+					
+						<div id="source_skill_xxx_1" data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+							<div  skillId="skill_xxx_1" class="skillinPool dojoDndItem" style="background-image:url(img/wowicons/icons/Spell_Frost_FrostArmor02.jpg);" dndtype="skill">
+								<p style="margin-top:25px">冰 盾<p>
+							</div>
+						</div>
+						
+						<div id="source_skill_xxx_2" data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+							<div  skillId="skill_xxx_2" class="skillinPool dojoDndItem" style="background-image:url(img/wowicons/icons/Spell_Fire_FlameBolt.jpg);" dndtype="skill">
+								<p style="margin-top:25px">炎爆术<p>
+							</div>
+						</div>					
+					</div>				
+				
+				</div>
+				
+				<div id="pathPool" data-dojo-type="dijit/layout/ContentPane" title="连 线" data-dojo-props="copyOnly:true">
+					<div  data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line1.png);" dndtype="path"></div>
+					</div>
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line2.png);" dndtype="path"></div>
+					</div>	
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line3.png);" dndtype="path"></div>
+					</div>	
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line4.png);" dndtype="path"></div>
+					</div>	
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line5.png);" dndtype="path"></div>
+					</div>	
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line6.png);" dndtype="path"></div>
+					</div>	
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line7.png);" dndtype="path"></div>
+					</div>	
+					<div data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true">
+						<div class="pathInPool dojoDndItem" style="background-image:url(img/path/line8.png);" dndtype="path"></div>
+					</div>						
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

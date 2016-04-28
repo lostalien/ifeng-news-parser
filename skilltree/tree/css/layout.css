@@ -1,0 +1,85 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+#appLayout {
+	height: 100%;
+}
+#leftCol {
+	width: 14em;
+}
+
+.claro .demoLayout .edgePanel {
+	background-color: #d0e9fc;
+}
+
+#viewsChart {
+	width: 550px;
+	height: 550px;
+}
+
+/*整个表格*/
+#grid{
+	border:1px pink solid;
+	width:640px;
+	float:left;
+}
+
+/*表格单元*/
+.cell{
+	width:64px;
+	height:64px;
+	border:0px green solid;
+	float:left;
+	background-color:lavenderblush;
+	overflow:hidden;
+	text-align:center;
+	/*background-image:url(img/wowicons/icons/Spell_Frost_FrostArmor02.jpg);*/
+	background-repeat:no-repeat;
+	opacity:0.6;
+}
+.cell:hover{
+	background-color:pink;
+	opacity:1;
+}
+
+.skillinPool{
+	width:64px;
+	height:64px;
+	overflow:hidden;
+	text-align:center;
+	/*background-image:url(img/wowicons/icons/Spell_Frost_FrostArmor02.jpg);*/
+	background-repeat:no-repeat;
+	opacity:0.6;
+	float:left;
+	margin-right:3px;
+	margin-top:3px;
+}
+
+.pathInPool{
+	width:64px;
+	height:64px;
+	overflow:hidden;
+	text-align:center;
+	background-repeat:no-repeat;
+	opacity:0.6;
+	float:left;
+	/*margin-right:3px;
+	margin-top:3px; */
+}
+
+.pathOnBorad{
+	width:64px;
+	height:64px;
+	overflow:hidden;
+	text-align:center;
+	background-repeat:no-repeat;
+	opacity:0.6;
+	float:left;
+}
+#pathPool{
+	
+}
