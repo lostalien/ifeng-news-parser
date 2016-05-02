@@ -6,12 +6,12 @@ define([
 	,"dojo/_base/declare"
 	],function(query,dom,domConstruct,declare){
 	
-		var Skill = function( row,col, id){
+		var Path = function( row,col, id){
 			this.row = row;
 			this.col = col;
 			this.id = id;
 		}
 		
-		return Skill;
+		return Path;
 
 });
