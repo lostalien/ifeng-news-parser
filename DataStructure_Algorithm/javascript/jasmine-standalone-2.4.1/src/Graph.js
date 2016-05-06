@@ -59,6 +59,7 @@ function Graph(){
 				if( color[nb] === 'white' ){
 					color[nb] = 'grey';
 					queue.enqueue( nb );
+
 				}
 			}
 			
@@ -67,6 +68,39 @@ function Graph(){
 				callback( u );
 			}
 		}
+	}
+	
+	this.bfs2 = function( v ){
+		var color = initializeColor();
+		var queue = new Deque();
+		queue.enqueue( v );
+		var d = [];
+		var pred = [];
+		
+		for( var j = 0; j < vertices.length; j++ ){
+			d[ vertices[j] ] = 0;
+			pred[ vertices[j] ] = null;
+		}		
+		while( !queue.empty() ){
+			var u = queue.dequeue();
+			var neighbors = adjList.get(u);
+			color[u] = 'grey';
+			for( var i = 0; i < neighbors.length; i++ ){
+				var nb = neighbors[i];
+				if( color[nb] === 'white' ){
+					color[nb] = 'grey';
+					queue.enqueue( nb );
+					d[nb] = d[u] + 1;
+					pred[nb] = u;					
+				}
+			}
+			
+			color[u] = 'black';
+			return {
+				distances : d
+				,predecessor: pred
+			}
+		}		
 	}
 
 	/*打印出类似这样的效果
