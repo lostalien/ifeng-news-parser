@@ -91,16 +91,43 @@ function Graph(){
 					color[nb] = 'grey';
 					queue.enqueue( nb );
 					d[nb] = d[u] + 1;
-					pred[nb] = u;					
+					pred[nb] = u;
 				}
 			}
 			
 			color[u] = 'black';
-			return {
-				distances : d
-				,predecessor: pred
+
+		}
+		
+		return {
+			distances : d
+			,predecessor: pred
+		}				
+	}
+	
+	this.dfs = function( callback ){
+		var color = initializeColor();
+		for( var i = 0; i < vertices.length; i++ ){
+			var c = vertices[i];
+			if( color[c] === 'white' ){
+				dfsVisit( c, color, callback );
 			}
-		}		
+		}
+	}
+	
+	var dfsVisit = function( c, color, callback ){
+		color[c] = 'grey';
+		if( callback ){
+			callback( c );
+		}
+		var neighbors = adjList.get( c );
+		for( var j = 0; j < neighbors.length; j++ ){
+			var w = neighbors[j];
+			if( color[w] === 'white' ){
+				dfsVisit( w, color, callback );
+			}
+		}
+		color[c] = 'black';
 	}
 
 	/*打印出类似这样的效果
