@@ -107,10 +107,8 @@ define([
 						var dndtype = domAttr.get(elem,"dndtype");
 						if( dndtype === "skill" ){//如果是技能
 							
-							var sk = board.getElementByCoordinate( sourceX, sourceY );
-							sk.x = targetX;
-							sk.y = targetY;
-							board.
+							board.moveElement( sourceX, sourceY, targetX, targetY );
+							
 						}else if( dndtype === "path" ){//如果是路径
 							
 						}

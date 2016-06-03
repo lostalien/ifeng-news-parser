@@ -43,10 +43,10 @@ require([
 			,grid
 		);
 		//将每个cell变为可拖拽Source
-		var skillCell = new Source(cell.id,{ accept:['skill','path'], copyOnly:false, selfAccept:false });
+		var boardCell = new Source(cell.id,{ accept:['skill','path'], copyOnly:false, selfAccept:false });
 		var boardController = new BoardController();
 		//给cell设置drop事件				
-		skillCell.on("Drop",function(source,nodes,copy){
+		boardCell.on("Drop",function(source,nodes,copy){
 			var target = this;			
 			boardController.onDrop(source, nodes, target );
 			

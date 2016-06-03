@@ -11,8 +11,8 @@ define([
 		var Board = function( totalRow,totalCol){
 			this.totalRow = totalRow;
 			this.totalCol = totalCol;
-			var cellArr;
-			var skillMap = {};
+			var cellArr;//存储每个cell，是个二维数组
+			var cellMap = {};
 			var that = this;
 			
 			//初始化cellArr
@@ -29,25 +29,44 @@ define([
 			//向网格板中添加一个技能
 			this.addSkill = function( sk ){
 				if( !sk instanceof Skill ){
-					throw new Error("非法的参数类型");
+					throw new Error("本方法只接受Skill类型的参数");
 				}
 				//先向map中添加
-				skillMap[sk.id] = sk;
+				cellMap[sk.id] = sk;
 				//再向数组中添加
 				cellArr[sk.row][sk.col] = sk;
 				
 			}
 			
-			this.setSkill = function( sk )
+			//this.setSkill = function( sk );
 			
 			//查看是否已有某个技能
 			this.hasSkill = function( skillId ){
-				if( skillMap[skillId] ){
+				if( cellMap[skillId] ){
 					return true;
 				}else{
 					return false;
 				}
-			}			
+			}
+			
+			//向网格板中添加一个路径
+			this.addPath = function( path ){
+				if( !path instanceof Path ){
+					throw new Error("本方法只接受Path类型的参数");
+				}
+				//先向map中添加
+				cellMap[path.id] = path;
+				//再向数组中添加
+				cellArr[path.row][path.col] = path;
+			}
+			
+			//元素从一个位置移动到另一个位置
+			this.moveElement = function( sourceX, sourceY, targetX, targetY ){
+				var elem = this.getElementByCoordinate( sourceX, sourceY );
+				elem.moveTo( targetX, targetY );
+				cellArr[sourceX][sourceY] = null;
+				cellArr[targetX][targetY] = elem;
+			}
 			
 			//查看某个单元格上是否已有内容
 			this.hasElementOnCell = function( x,y ){
@@ -98,14 +117,15 @@ define([
 			
 			//调试用
 			this.showSkillKeys = function(){
-				console.log( "网格板中包含有如下技能:" + Object.keys(skillMap) );
+				console.log( "网格板中包含有如下技能:" + Object.keys(cellMap) );
 			}
 			//调试用
 			this.showGraphicBoard = function(){
 				var str = "";
 				for( var i = 0; i < cellArr.length; i++ ){
 					for( var j = 0; j < cellArr[i].length; j++ ){
-						if( cellArr[i][j] ){
+						var t = cellArr[i][j];
+						if( t ){
 							var skill = cellArr[i][j];
 							str += skill.id + " " + skill.row + " " + skill.col;
 							

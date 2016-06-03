@@ -11,7 +11,11 @@ define([
 			this.col = col;
 			this.id = id;
 		}
-		
+		//移动到新的单元格
+		Path.prototype.moveTo = function( x, y ){
+			this.row = x;
+			this.col = y;
+		}
 		return Path;
 
 });
