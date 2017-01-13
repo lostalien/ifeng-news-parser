@@ -106,8 +106,8 @@ public class MyUI extends UI {
         grid.setContainerDataSource(new BeanItemContainer<>(Customer.class, customers));
     }
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+/*    @WebServlet(urlPatterns = "*//*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
+    public static class MyUIServlet2 extends VaadinServlet {
+    }*/
 }
