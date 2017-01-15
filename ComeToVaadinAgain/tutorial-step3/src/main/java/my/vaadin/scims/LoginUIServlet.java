@@ -10,6 +10,6 @@ import javax.servlet.annotation.WebServlet;
  * Created by redemption on 2016/12/8.
  */
 @WebServlet(urlPatterns = "/*", name = "LoginUIServlet", asyncSupported = true)
-@VaadinServletConfiguration(ui = LoginUI.class, productionMode = false)
+@VaadinServletConfiguration(ui = NavigatorUI.class, productionMode = false)
 public class LoginUIServlet extends VaadinServlet {
 }
