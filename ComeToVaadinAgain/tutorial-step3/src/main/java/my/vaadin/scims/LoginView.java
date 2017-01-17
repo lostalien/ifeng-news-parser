@@ -12,7 +12,7 @@ import com.vaadin.ui.*;
 class LoginView extends GridLayout implements View{
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        Notification.show("Welcome to the Animal Farm");
+        Notification.show("这是登录页！");
     }
 
 

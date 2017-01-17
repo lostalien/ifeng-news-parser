@@ -4,6 +4,10 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * Created by hxj on 2017/1/15.
  */
@@ -20,5 +24,6 @@ public class NavigatorUI extends UI {
         // Create and register the views
         navigator.addView("", new LoginView(navigator));
         navigator.addView("main", new MainView());
+
     }
 }

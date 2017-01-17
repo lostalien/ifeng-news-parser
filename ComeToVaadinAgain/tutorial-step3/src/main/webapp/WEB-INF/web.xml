@@ -3,6 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
+
 	<display-name>vaadin-tut3</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -12,5 +13,11 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+
+    <servlet>
+        <servlet-name>initDB</servlet-name>
+        <servlet-class>my.vaadin.scims.InitDBServlet</servlet-class>
+        <load-on-startup>1</load-on-startup><!--加这个标签，tomcat启动时会自动加载指定的servlet,值是servlet的加载顺序！！！   数字越小代表加载的优先级越高-->
+    </servlet>
 
 </web-app>
